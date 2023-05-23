@@ -1,33 +1,20 @@
-pila_peliculas = [
-    ("Guardianes de la galaxia", 2014),
-    ("Capitan America", 2014),
-    ("Black Panther", 2018),
-    ("Ant-Man y la Avispa", 2018),
-    ("Captain America: Civil War", 2016),
-    ("Doctor Strange", 2016),
+peliculas = [
+    {"titulo": "Avengers: Endgame", "estudio": "Marvel Studios", "año": 2019},
+    {"titulo": "Black Panther", "estudio": "Marvel Studios", "año": 2018},
+    {"titulo": "The Avengers", "estudio": "Marvel Studios", "año": 2012},
+    {"titulo": "Captain America: Civil War", "estudio": "Marvel Studios", "año": 2016},
+    {"titulo": "Thor: Ragnarok", "estudio": "Marvel Studios", "año": 2017},
+    {"titulo": "Wonder Woman", "estudio": "Warner Bros.", "año": 2017},
+    {"titulo": "Deadpool", "estudio": "20th Century Fox", "año": 2016},
+    {"titulo": "Spider-Man: Homecoming", "estudio": "Marvel Studios", "año": 2017},
+    {"titulo": "Guardians of the Galaxy", "estudio": "Marvel Studios", "año": 2014}
 ]
 
-peliculas_2014 = []
-peliculas_2018 = []
-peliculas_2016 = []
+peliculas_2014 = [pelicula["titulo"] for pelicula in peliculas if pelicula["año"] == 2014]
+print("Películas estrenadas en 2014:", peliculas_2014)
 
+peliculas_2018 = sum(1 for pelicula in peliculas if pelicula["año"] == 2018)
+print("Cantidad de películas estrenadas en 2018:", peliculas_2018)
 
-def pelicula_año(pila, año, peliculas):
-    pila_aux = []
-    while len(pila) > 0:
-        pelicula = pila.pop()
-        if pelicula[1] == año:
-            peliculas.append(pelicula[0])
-        pila_aux.append(pelicula)
-    while len(pila_aux) > 0:
-        pila.append(pila_aux.pop())
-    return peliculas
-
-
-peliculas_2014 = pelicula_año(pila_peliculas, 2014, peliculas_2014)
-peliculas_2016 = pelicula_año(pila_peliculas, 2016, peliculas_2016)
-peliculas_2018 = pelicula_año(pila_peliculas, 2018, peliculas_2018)
-
-print("peliculas estrenada en el 2014", peliculas_2014)
-print("peliculas estrenadas en el 2016", peliculas_2016)
-print("peliculas estrenada en el año 2018",peliculas_2018)
+peliculas_marvel_2016 = [pelicula["titulo"] for pelicula in peliculas if pelicula["estudio"] == "Marvel Studios" and pelicula["año"] == 2016]
+print("Películas de Marvel Studios estrenadas en 2016:", peliculas_marvel_2016)
